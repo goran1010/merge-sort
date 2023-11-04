@@ -1,4 +1,10 @@
-const array = [545, 17, 2, 8, 224, 35, 1000];
+function mergeSort(array, first = 0, last = array.length - 1) {
+  if (first < last) {
+    let mid = Math.floor((first + last) / 2);
+    return merge(mergeSort(array, first, mid), mergeSort(array, mid + 1, last));
+  }
+  return [array[first]];
+}
 
 function merge(arrayOne, arrayTwo) {
   let i = 0;
@@ -22,12 +28,4 @@ function merge(arrayOne, arrayTwo) {
   return sortedArray;
 }
 
-function mergeSort(array, first = 0, last = array.length - 1) {
-  if (first < last) {
-    let mid = Math.floor((first + last) / 2);
-    return merge(mergeSort(array, first, mid), mergeSort(array, mid + 1, last));
-  }
-  return [array[first]];
-}
-
-console.log(mergeSort(array));
+console.log(mergeSort([-545, 17, 2, 8, 224, 35, 1000]));
